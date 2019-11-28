@@ -21,8 +21,9 @@ find_library(OGG_PATH ogg)
 find_library(OPUS_PATH opus)
 target_link_libraries(opusfile "${OGG_PATH}" "${OPUS_PATH}")
 
-find_path(OPUS_MULTISTREAM_H "opus_multistream.h")
-target_include_directories(opusfile PUBLIC include "${OPUS_MULTISTREAM_H}")
+find_path(OPUS_MULTISTREAM_H "opus_multistream.h" PATH_SUFFIXES "opus")
+find_path(OGG_H "ogg.h" PATH_SUFFIXES "ogg")
+target_include_directories(opusfile PUBLIC include "${OPUS_MULTISTREAM_H}" "${OGG_H}/..")
 
 install(TARGETS opusfile
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
