@@ -11,7 +11,9 @@ if(" ${CMAKE_SOURCE_DIR}" STREQUAL " ${CMAKE_BINARY_DIR}")
     )
 endif()
 
-add_library(opusfile SHARED 
+option(BUILD_SHARED_LIBS "Build shared library" OFF)
+
+add_library(opusfile 
     src/info.c
     src/internal.c
     src/internal.h
